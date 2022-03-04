@@ -1,0 +1,17 @@
+// EXAMPLE
+create_table("users") {
+  t.Column("email", "string", {})
+  t.Column("twitter_handle", "string", {"size": 50})
+  t.Column("age", "integer", {"default": 0})
+  t.Column("admin", "bool", {"default": false})
+  t.Column("company_id", "uuid", {"default_raw": "uuid_generate_v1()"})
+  t.Column("bio", "text", {"null": true})
+  t.Column("joined_at", "timestamp", {})
+}
+
+create_table("todos") {
+  t.Column("user_id", "integer", {})
+  t.Column("title", "string", {"size": 100})
+  t.Column("details", "text", {"null": true})
+  t.ForeignKey("user_id", {"users": ["id"]}, {"on_delete": "cascade"})
+}

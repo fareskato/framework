@@ -1,0 +1,2 @@
+// EXAMPLE
+drop_table("table_name")
